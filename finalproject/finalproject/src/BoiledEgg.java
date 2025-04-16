@@ -32,3 +32,5 @@ public class BoiledEgg {
         return type;
     }
 }
+// Compile with javac Timer.java 
+// run with java TimerApp
