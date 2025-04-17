@@ -8,10 +8,10 @@ The purpose of this timer is to allow the user to select the preferred level of 
 Then the application will display a countdown timer on the screen and notify user when timer reaches zero. (DONE!)
 
 **Estimated time for the final project:**
-Research and Design	2-3 hours
-Create Basic Structure (UML) 2-3 hours
-Implement Timer Logic	5-6 hours
-Implement Egg Timer Logic	5-6 hours
-Create GUI (MainApp)	6-7 hours
-Testing and Debugging	3-4 hours
-Documentation and Final Refinements 2-3 hours
+Research and Design	3 hours
+Create Basic Structure (UML) 2 hours
+Implement Timer Logic	3 hours
+Implement Egg Timer Logic	3 hours
+Create GUI (MainApp)	3 hours
+Testing and Debugging	3 hours
+Documentation and Final Refinements 2 hours
