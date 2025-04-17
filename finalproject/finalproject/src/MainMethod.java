@@ -29,16 +29,18 @@ public class App extends Application {
         primaryStage.setTitle("Boiled Egg Timer");
         
         // Create GUI components
-        Label titleLabel = new Label("Boiled Egg Timer");
+        Label titleLabel = new Label("🥚Boiled Egg Timer🥚");
         titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        titleLabel.setStyle("-fx-text-fill: navy;");
         
         Label selectLabel = new Label("Select egg type:");
+        selectLabel.setStyle("-fx-text-fill: navy;");
         
         eggTypeComboBox = new ComboBox<>();
         eggTypeComboBox.getItems().addAll("soft", "medium", "hard");
         eggTypeComboBox.setValue("medium");
         
-        timerLabel = new Label("00:00");
+        timerLabel = new Label("⏳ 00:00");
         timerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 36));
         
         progressBar = new ProgressBar(0);
@@ -47,12 +49,12 @@ public class App extends Application {
         // Create buttons
         startButton = new Button("Start Timer");
         startButton.setPrefWidth(120);
-        startButton.setOnAction(e -> startTimer());
+        startButton.setOnAction(_ -> startTimer());
         
         stopButton = new Button("Stop Timer");
         stopButton.setPrefWidth(120);
         stopButton.setDisable(true);
-        stopButton.setOnAction(e -> stopTimer());
+        stopButton.setOnAction(this::stopTimer);
         
         // Create button layout
         HBox buttonBox = new HBox(20);
@@ -61,6 +63,7 @@ public class App extends Application {
         
         // Create main layout
         VBox root = new VBox(15);
+        root.setStyle("-fx-background-color: lightblue;");
         root.setPadding(new Insets(20));
         root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(
@@ -78,7 +81,7 @@ public class App extends Application {
         primaryStage.show();
         
         // Handle application close
-        primaryStage.setOnCloseRequest(e -> {
+        primaryStage.setOnCloseRequest(_ -> {
             if (timer != null) {
                 timer.cancel();
             }
@@ -124,7 +127,8 @@ public class App extends Application {
                     secondsLeft--;
                 } else {
                     Platform.runLater(() -> {
-                        timerLabel.setText("Done!");
+                        timerLabel.setText("✅ Done!");
+                        timerLabel.setStyle("-fx-text-fill: green;");
                         resetUI();
                         showNotification(primaryStage -> {
                             Stage alert = new Stage();
@@ -134,7 +138,7 @@ public class App extends Application {
                             alertLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
                             
                             Button okButton = new Button("OK");
-                            okButton.setOnAction(evt -> alert.close());
+                            okButton.setOnAction(_ -> alert.close());
                             
                             VBox alertBox = new VBox(20);
                             alertBox.setAlignment(Pos.CENTER);
@@ -156,7 +160,7 @@ public class App extends Application {
         timer.scheduleAtFixedRate(countdown, 0, 1000);
     }
     
-    private void stopTimer() {
+    private void stopTimer(javafx.event.ActionEvent event) {
         if (timer != null) {
             timer.cancel();
             timer = null;
