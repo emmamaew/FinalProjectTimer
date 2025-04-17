@@ -58,3 +58,5 @@ public class TimerApp {
         timer.scheduleAtFixedRate(countdown, 0, 1000);
     }
 }
+// Compile it with Timer.java
+// Run with java TimerApp
